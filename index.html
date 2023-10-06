@@ -12,14 +12,30 @@
 </head>
 <body ng-controller="EmployeeController">
     <h3>Desafio Netdeal</h3>
+    <form name="employeeForm" ng-controller="EmployeeController" ng-submit="saveEmployee(employee)" novalidate>
+        <label for="username">Nome*:</label>
+        <input type="text" id="username" name="username" ng-model="employee.name" placeholder="Enter username" required><br><br>
     
-    <label for="username">Nome*:</label>
-    <input type="text" id="username" ng-model="employee.name" placeholder="Enter username" required><br><br>
+        <label for="password">Senha*:</label>
+        <input type="password" id="password" name="password" ng-model="employee.password" placeholder="Enter password" required><br><br>
     
-    <label for="password">Senha*:</label>
-    <input type="password" id="password" ng-model="employee.password" placeholder="Enter password" required><br><br>
+        <div ng-messages="employeeForm.username.$error" ng-show="(employeeForm.username.$error.required && employeeForm.username.$dirty) || (employeeForm.username.$error.required && !employeeForm.username.$dirty && !employeeForm.$submitted)">
+            <div ng-message="required" class="error-message" style="color: red;">Username is required.</div>
+        </div>
     
-    <button ng-click="saveEmployee(employee)">Salvar</button><br><br> 
+        <div ng-messages="employeeForm.password.$error" ng-show="(employeeForm.password.$error.required && employeeForm.password.$dirty) || (employeeForm.password.$error.required && !employeeForm.password.$dirty && !employeeForm.$submitted)">
+            <div ng-message="required" class="error-message" style="color: red;">Password is required.</div>
+        </div>
+    
+        <button type="submit" ng-disabled="employeeForm.$invalid">Salvar</button><br><br>
+    </form>
+    
+    
+    
+    
+    
+    
+    
 
     <button ng-click="displayAllEmployees()">Listar todos os colaboradores</button><br><br>
 

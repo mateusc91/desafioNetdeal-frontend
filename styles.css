@@ -1,19 +1,4 @@
-/* Red */
-.red {
+
+.error-message {
     color: red;
-}
-
-/* Yellow */
-.yellow {
-    color: yellow;
-}
-
-/* Light Green */
-.light-green {
-    color: lightgreen;
-}
-
-/* Dark Green */
-.dark-green {
-    color: darkgreen;
 }
