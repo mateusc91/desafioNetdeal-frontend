@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="employeeApp">
+<head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Employee Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-messages.js"></script>
+
+    <script src="app.js"></script>
+</head>
+<body ng-controller="EmployeeController">
+    <h3>Desafio Netdeal</h3>
+    
+    <label for="username">Nome*:</label>
+    <input type="text" id="username" ng-model="employee.name" placeholder="Enter username" required><br><br>
+    
+    <label for="password">Senha*:</label>
+    <input type="password" id="password" ng-model="employee.password" placeholder="Enter password" required><br><br>
+    
+    <button ng-click="saveEmployee(employee)">Salvar</button><br><br> 
+
+    <button ng-click="displayAllEmployees()">Listar todos os colaboradores</button><br><br>
+
+    <h4>Colaboradores:</h4>
+    <ul class="list-group">
+        <li ng-repeat="emp in employees" class="list-group-item">
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>Name:</strong> {{ emp.name }}<br>
+                    <strong>Score:</strong> {{ emp.passwordScore }}%
+                </div>
+                <div class="col-md-8">
+                    <strong>Password Complexity:</strong>
+                    <span ng-class="{
+                        'bg-danger text-white': emp.passwordComplexity === 'RUIM',
+                        'bg-warning text-dark': emp.passwordComplexity === 'MEDIANA',
+                        'bg-success text-white': emp.passwordComplexity === 'BOM',
+                        'bg-info text-white': emp.passwordComplexity === 'FORTE'
+                    }">{{ emp.passwordComplexity }}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+    
+</body>
+</html>
